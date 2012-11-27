@@ -11,20 +11,34 @@ import org.projii.commons.spaceship.weapon.Weapon;
 public class Spaceship {
 
 	private SpaceshipModel model;
+    private int presentHealth;
+    private int speed;
     private final int weaponAmount;
     private Weapon[] weapons;
     private EnergyGenerator generator;
     private SpaceshipEngine engine;
     private EnergyShield energyShield;
 
-	public Spaceship(EnergyGenerator generator, SpaceshipEngine engine, EnergyShield energyShield, int WEAPON_AMOUNT, Weapon[] weapons) {
+	public Spaceship(SpaceshipModel model, EnergyGenerator generator, SpaceshipEngine engine, EnergyShield energyShield, int WEAPON_AMOUNT, Weapon[] weapons) {
         this.generator = generator;
         this.engine = engine;
         this.energyShield = energyShield;
         this.weaponAmount = WEAPON_AMOUNT;
         this.weapons = weapons;
+        this.presentHealth = model.getHealth();
     }
-
+    public int getPresentHealth() {
+        return presentHealth;
+    }
+    
+    public int getSpeed() {
+        return speed;
+    }
+    
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
+	
     public int getWeaponAmount() {
         return weaponAmount;
     }
@@ -59,15 +73,21 @@ public class Spaceship {
         model.setRotation(rotation);
     }
 
+
     public void demage(int damage) {
         if (energyShield.getPresentCount() > 0) {
             energyShield.Damages(damage);
         } else {
-            model.Damages(damage);
+        	int attack = damage - model.getArmor();
+        	if (presentHealth < attack){
+        		presentHealth = 0;
+        	} else {
+        		presentHealth -= attack;
+        	}
         }
         energyShield.CreateDowload();
     }
-
+   
     public void forTimer() {
         energyShield.Regeneration();
         generator.regenerate();
