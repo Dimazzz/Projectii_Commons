@@ -13,20 +13,23 @@ public class Spaceship {
 	private SpaceshipModel model;
     private int presentHealth;
     private int speed;
-    private final int weaponAmount;
     private Weapon[] weapons;
     private EnergyGenerator generator;
     private SpaceshipEngine engine;
     private EnergyShield energyShield;
 
-	public Spaceship(SpaceshipModel model, EnergyGenerator generator, SpaceshipEngine engine, EnergyShield energyShield, int WEAPON_AMOUNT, Weapon[] weapons) {
-        this.generator = generator;
+	public Spaceship(SpaceshipModel model, EnergyGenerator generator, SpaceshipEngine engine, EnergyShield energyShield, Weapon[] weapons) {
+        this.model = model;
+		this.generator = generator;
         this.engine = engine;
         this.energyShield = energyShield;
-        this.weaponAmount = WEAPON_AMOUNT;
         this.weapons = weapons;
         this.presentHealth = model.getHealth();
     }
+    public SpaceshipModel getSpaceshipModel() {
+        return model;
+    }
+    
     public int getPresentHealth() {
         return presentHealth;
     }
@@ -37,10 +40,6 @@ public class Spaceship {
     
     public void setSpeed(int speed) {
         this.speed = speed;
-    }
-	
-    public int getWeaponAmount() {
-        return weaponAmount;
     }
 
     public EnergyGenerator getGenerator() {
@@ -60,7 +59,7 @@ public class Spaceship {
     }
   
     public void fire(Map map) {
-        for (int i = 0; i <= weaponAmount - 1; i++) {
+        for (int i = 0; i <= model.getWeaponAmount() - 1; i++) {
             if (generator.getPresentCount() >= weapons[i].getBullet().getConsumeEnergy()) {
                 map.addBulletInList(weapons[i].fire(model.getLocation(), model.getRotation()));
                 generator.useEnergy(weapons[i].getBullet().getConsumeEnergy());
@@ -72,7 +71,6 @@ public class Spaceship {
         model.setLocation(p);
         model.setRotation(rotation);
     }
-
 
     public void demage(int damage) {
         if (energyShield.getPresentCount() > 0) {
@@ -91,7 +89,7 @@ public class Spaceship {
     public void forTimer() {
         energyShield.Regeneration();
         generator.regenerate();
-        for (int i = 0; i <= weaponAmount - 1; i++) {
+        for (int i = 0; i <= model.getWeaponAmount() - 1; i++) {
             weapons[i].Download();
         }
     }
@@ -100,8 +98,6 @@ public class Spaceship {
         Boolean result = true;
         if (model.equals(ship.model) == false)
         	return false;
-        if (weaponAmount != ship.getWeaponAmount())
-            return false;
         if (this.generator.getId() != ship.getGenerator().getId())
             return false;
         if (this.generator.getCount() != ship.getGenerator().getCount())

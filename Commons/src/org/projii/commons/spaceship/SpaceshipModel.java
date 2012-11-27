@@ -8,10 +8,9 @@ public class SpaceshipModel  extends RealworldObject {
     private final int id;
 	private int health;
     private int armor;
-    
-
-    
-    public SpaceshipModel(String name, int id, int health, int armor, int length, int width){
+    private final int weaponAmount;
+   
+    public SpaceshipModel(String name, int id, int health, int armor, int weaponAmount, int length, int width){
     	super(id);
         this.id = id;
         this.name = name;
@@ -19,6 +18,7 @@ public class SpaceshipModel  extends RealworldObject {
         this.armor = armor;
         setLength(length);
         setWidth(width);
+        this.weaponAmount = weaponAmount;
     }
     
     public String getName() {
@@ -32,8 +32,11 @@ public class SpaceshipModel  extends RealworldObject {
     }
     public int getArmor() {
         return armor;
+    }	
+    public int getWeaponAmount() {
+        return weaponAmount;
     }
-
+    
     public Boolean equals(SpaceshipModel model) {
     	Boolean result = true;
         if (id != model.getId())
@@ -45,6 +48,8 @@ public class SpaceshipModel  extends RealworldObject {
         if (this.getLength() != model.getLength())
             return false;
         if (this.getWidth() != model.getWidth())
+            return false;
+        if (weaponAmount != model.getWeaponAmount())
             return false;
         return result;
     }
