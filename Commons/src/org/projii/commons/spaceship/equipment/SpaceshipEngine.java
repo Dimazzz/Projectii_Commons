@@ -5,6 +5,7 @@ public class SpaceshipEngine {
     private int maxSpeed;
     private int speedUp;
     private int handleability;
+    private String name;
     private final int id;
 
     public int getId() {
@@ -23,10 +24,11 @@ public class SpaceshipEngine {
         return handleability;
     }
 
-    public SpaceshipEngine(int id, int maxSpeed, int speedUp, int handleability) {
+    public SpaceshipEngine(int id, int maxSpeed, int speedUp, int handleability, String name) {
         this.id = id;
         this.maxSpeed = maxSpeed;
         this.speedUp = speedUp;
         this.handleability = handleability;
+        this.name = name;
     }
 }
