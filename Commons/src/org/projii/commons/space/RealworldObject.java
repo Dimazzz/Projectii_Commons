@@ -3,13 +3,19 @@ package org.projii.commons.space;
 public abstract class RealworldObject {
 
     private final int id;
-    private int length;
-    private int width;
+    private final int length;
+    private final int width;
     private Point location;
     private int rotation;
+    private int health;
 
-    protected RealworldObject(int id) {
+    protected RealworldObject(int id, int length, int width, Point location, int rotation, int health) {
         this.id = id;
+        this.length = length;
+        this.width = width;
+        this.location = location;
+        this.rotation = rotation;
+        this.health = health;
     }
 
     public int getId() {
@@ -20,16 +26,8 @@ public abstract class RealworldObject {
         return length;
     }
 
-    public void setLength(int length) {
-        this.length = length;
-    }
-
     public int getWidth() {
         return width;
-    }
-
-    public void setWidth(int width) {
-        this.width = width;
     }
 
     public Point getLocation() {
@@ -47,6 +45,23 @@ public abstract class RealworldObject {
     public void setRotation(int rotation) {
         this.rotation = rotation;
     }
+
+    public void move(Point location, int rotation) {
+        setLocation(location);
+        setRotation(rotation);
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    protected void setHealth(int health) {
+        this.health = health;
+    }
+
+    public abstract void damage(int damage);
+
+
 
 
 }

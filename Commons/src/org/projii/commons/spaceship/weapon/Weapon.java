@@ -2,64 +2,27 @@ package org.projii.commons.spaceship.weapon;
 
 import org.projii.commons.space.Point;
 
-public abstract class Weapon {
-    private final int id;
-    private int rate;
-    private int cd = 0;
-    private Bullet bullet;
+public class Weapon {
+    private WeaponModel model;
+    private int currentCooldown;
 
-    public Weapon(int id, Bullet bullet, int rate) {
-        this.id = id;
-        this.bullet = bullet;
-        this.rate = rate;
-        createDownload();
+    public Weapon(WeaponModel model, int currentCooldown) {
+        this.model = model;
+        this.currentCooldown = currentCooldown;
     }
 
-    public int getRate() {
-        return rate;
-    }
-
-    public int getCd() {
-        return cd;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public Bullet getBullet() {
-        return bullet;
+    public Weapon(WeaponModel model) {
+        this.model = model;
+        this.currentCooldown = model.getCooldown();
     }
 
     public Bullet fire(Point direction, int rotation) {
-        //TODO: Think of better way to create bullet
-
-        if (cd == 0) {
-            Bullet blt = new Bullet(
-                    0,
-                    getBullet().getSpeed(),
-                    getBullet().getDamage(),
-                    getBullet().getConsumeEnergy(),
-                    getBullet().getDistance(),
-                    getBullet().getRange(),
-                    direction,
-                    rotation,
-                    getBullet().getLength(),
-                    getBullet().getWidth());
-
-            createDownload();
-            return blt;
-        }
+//        return new Bullet(bulletId, location, rotation, 1000, bulletSpeed,
+//                damage, direction, range);
         return null;
     }
 
-    public void createDownload() {
-        cd = rate;
-    }
-
-    public void Download() {
-        if (cd > 0) {
-            cd--;
-        }
+    public WeaponModel getModel() {
+        return model;
     }
 }

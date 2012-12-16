@@ -1,60 +1,23 @@
 package org.projii.commons.spaceship;
 
-import org.projii.commons.space.RealworldObject;
+public class SpaceshipModel {
 
-public class SpaceshipModel extends RealworldObject {
+    public final String name;
+    public final int id;
+    public final int length;
+    public final int width;
+    public final int health;
+    public final int weaponSlotCount;
+    public final int armor;
 
-    private String name;
-    private final int id;
-    private int health;
-    private int armor;
-    private final int weaponAmount;
-
-    public SpaceshipModel(String name, int id, int health, int armor, int weaponAmount, int length, int width) {
-        super(id);
-        this.id = id;
+    public SpaceshipModel(String name, int id, int length, int width, int health, int weaponSlotAmount, int armor) {
         this.name = name;
+        this.id = id;
+        this.length = length;
+        this.width = width;
         this.health = health;
+        this.weaponSlotCount = weaponSlotAmount;
         this.armor = armor;
-        setLength(length);
-        setWidth(width);
-        this.weaponAmount = weaponAmount;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public int getHealth() {
-        return health;
-    }
-
-    public int getArmor() {
-        return armor;
-    }
-
-    public int getWeaponAmount() {
-        return weaponAmount;
-    }
-
-    public Boolean equals(SpaceshipModel model) {
-        Boolean result = true;
-        if (id != model.getId())
-            return false;
-        if (health != model.getHealth())
-            return false;
-        if (armor != model.getArmor())
-            return false;
-        if (this.getLength() != model.getLength())
-            return false;
-        if (this.getWidth() != model.getWidth())
-            return false;
-        if (weaponAmount != model.getWeaponAmount())
-            return false;
-        return result;
-    }
 }

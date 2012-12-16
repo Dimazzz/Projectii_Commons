@@ -2,64 +2,44 @@ package org.projii.commons.spaceship.equipment;
 
 public class EnergyShield {
 
-    private int maxCount;
-    private int presentCount;
+    private final EnergyShieldModels model;
+    private int currentEnergyLevel;
 
-    private int regeneration;
-
-    private int time;
-    private int timeLeft;
-    private final int id;
-
-    public int getId() {
-        return id;
+    public EnergyShield(EnergyShieldModels model, int currentEnergyLevel) {
+        this.model = model;
+        this.currentEnergyLevel = currentEnergyLevel;
     }
 
-    public int getMaxCount() {
-        return maxCount;
+    public EnergyShield(EnergyShieldModels model) {
+        this.model = model;
+        this.currentEnergyLevel = model.maxEnergyLevel;
     }
 
-    public int getPresentCount() {
-        return presentCount;
-    }
-
-    public int Time() {
-        return time;
-    }
-
-    public int getTimeLeft() {
-        return timeLeft;
-    }
-
-    public int getRegeneration() {
-        return regeneration;
+    //return how much damage you'll get
+    public int protect(int damage) {
+        int energyLevelAfterDamage = currentEnergyLevel - damage;
+        currentEnergyLevel = energyLevelAfterDamage > 0 ? damage : 0;
+        return energyLevelAfterDamage > 0 ? 0 : Math.abs(energyLevelAfterDamage);
     }
 
 
-    public EnergyShield(int id, int maxCount, int regeneration, int Time) {
-        this.id = id;
-        this.maxCount = maxCount;
-        presentCount = this.maxCount;
-        this.regeneration = regeneration;
-        this.time = Time;
+    public EnergyShieldModels getModel() {
+        return model;
     }
 
-    public void Damages(int damage) {
-        if (presentCount < damage) {
-            presentCount = 0;
-        } else {
-            presentCount -= damage;
+    public int getCurrentEnergyLevel() {
+        return currentEnergyLevel;
+    }
+
+    public void regenerate() {
+        if (currentEnergyLevel < model.maxEnergyLevel) {
+
+            currentEnergyLevel =
+                    currentEnergyLevel + model.regenerationSpeed > model.maxEnergyLevel ?
+                            model.maxEnergyLevel :
+                            currentEnergyLevel + model.regenerationSpeed;
         }
     }
 
-    public void CreateDowload() {
-        timeLeft = time;
-    }
-
-    public void Regeneration() {
-        if (timeLeft == 0) {
-            presentCount = presentCount + regeneration;
-        } else timeLeft--;
-    }
 
 }

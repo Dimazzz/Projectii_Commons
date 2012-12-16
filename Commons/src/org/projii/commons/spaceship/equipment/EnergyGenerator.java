@@ -2,39 +2,32 @@ package org.projii.commons.spaceship.equipment;
 
 public class EnergyGenerator {
 
-    private int maxCount;
-    private int presentCount;
-    private int regeneration;
-    private int id;
+    private EnergyGeneratorModel model;
+    private int currentEnergyLevel;
 
-    public EnergyGenerator(int id, int maxCount, int regeneration) {
-        this.id = id;
-        this.maxCount = maxCount;
-        presentCount = this.maxCount;
-        this.regeneration = regeneration;
+    public EnergyGenerator(EnergyGeneratorModel model, int currentEnergyLevel) {
+        this.model = model;
+        this.currentEnergyLevel = currentEnergyLevel;
     }
 
-    public int getId() {
-        return id;
+    public EnergyGenerator(EnergyGeneratorModel model) {
+        this.model = model;
+        this.currentEnergyLevel = model.maxEnergyLevel;
     }
 
-    public int getCount() {
-        return maxCount;
+    public EnergyGeneratorModel getModel() {
+        return model;
     }
 
-    public int getPresentCount() {
-        return presentCount;
-    }
-
-    public int getRegeneration() {
-        return regeneration;
+    public int getCurrentEnergyLevel() {
+        return currentEnergyLevel;
     }
 
     public void useEnergy(int use) {
-        presentCount = presentCount - use;
+        currentEnergyLevel = currentEnergyLevel - use;
     }
 
     public void regenerate() {
-        presentCount = presentCount + regeneration;
+        currentEnergyLevel = currentEnergyLevel + model.regenerationSpeed;
     }
 }

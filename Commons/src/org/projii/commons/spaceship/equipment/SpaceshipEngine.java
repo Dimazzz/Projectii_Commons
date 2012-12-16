@@ -2,11 +2,12 @@ package org.projii.commons.spaceship.equipment;
 
 public class SpaceshipEngine {
 
-    private int maxSpeed;
-    private int speedUp;
-    private int handleability;
-    private String name;
     private final int id;
+    private int maxSpeed;
+    private int acceleration;
+    private int maneuverability;
+    private String name;
+
 
     public int getId() {
         return id;
@@ -16,19 +17,19 @@ public class SpaceshipEngine {
         return maxSpeed;
     }
 
-    public int getSpeedUp() {
-        return speedUp;
+    public int getAcceleration() {
+        return acceleration;
     }
 
-    public int getHandleability() {
-        return handleability;
+    public int getManeuverability() {
+        return maneuverability;
     }
 
-    public SpaceshipEngine(int id, int maxSpeed, int speedUp, int handleability, String name) {
+    public SpaceshipEngine(int id, int maxSpeed, int acceleration, int maneuverability, String name) {
         this.id = id;
         this.maxSpeed = maxSpeed;
-        this.speedUp = speedUp;
-        this.handleability = handleability;
+        this.acceleration = acceleration;
+        this.maneuverability = maneuverability;
         this.name = name;
     }
 }
