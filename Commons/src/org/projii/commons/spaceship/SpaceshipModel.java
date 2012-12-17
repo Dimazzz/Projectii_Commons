@@ -10,13 +10,13 @@ public class SpaceshipModel {
     public final int weaponSlotCount;
     public final int armor;
 
-    public SpaceshipModel(String name, int id, int length, int width, int health, int weaponSlotAmount, int armor) {
+    public SpaceshipModel(int id, String name, int length, int width, int health, int weaponSlotCount, int armor) {
         this.name = name;
         this.id = id;
         this.length = length;
         this.width = width;
         this.health = health;
-        this.weaponSlotCount = weaponSlotAmount;
+        this.weaponSlotCount = weaponSlotCount;
         this.armor = armor;
     }
 

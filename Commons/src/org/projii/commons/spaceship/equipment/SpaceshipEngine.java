@@ -17,6 +17,10 @@ public class SpaceshipEngine {
         return maxSpeed;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public int getAcceleration() {
         return acceleration;
     }

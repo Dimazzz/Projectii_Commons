@@ -2,15 +2,15 @@ package org.projii.commons.spaceship.equipment;
 
 public class EnergyShield {
 
-    private final EnergyShieldModels model;
+    private final EnergyShieldModel model;
     private int currentEnergyLevel;
 
-    public EnergyShield(EnergyShieldModels model, int currentEnergyLevel) {
+    public EnergyShield(EnergyShieldModel model, int currentEnergyLevel) {
         this.model = model;
         this.currentEnergyLevel = currentEnergyLevel;
     }
 
-    public EnergyShield(EnergyShieldModels model) {
+    public EnergyShield(EnergyShieldModel model) {
         this.model = model;
         this.currentEnergyLevel = model.maxEnergyLevel;
     }
@@ -23,7 +23,7 @@ public class EnergyShield {
     }
 
 
-    public EnergyShieldModels getModel() {
+    public EnergyShieldModel getModel() {
         return model;
     }
 
