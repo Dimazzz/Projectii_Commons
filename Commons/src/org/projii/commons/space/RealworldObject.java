@@ -62,6 +62,4 @@ public abstract class RealworldObject {
     public abstract void damage(int damage);
 
 
-
-
 }

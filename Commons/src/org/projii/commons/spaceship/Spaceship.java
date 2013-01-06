@@ -15,8 +15,8 @@ public class Spaceship extends RealworldObject {
     private final SpaceshipEngine engine;
     private final EnergyShield energyShield;
 
-        public Spaceship(int id, SpaceshipModel model, Weapon[] weapons, EnergyGenerator generator,
-                         SpaceshipEngine engine, EnergyShield energyShield) {
+    public Spaceship(int id, SpaceshipModel model, Weapon[] weapons, EnergyGenerator generator,
+                     SpaceshipEngine engine, EnergyShield energyShield) {
 
         super(id, model.length, model.width, null, 0, model.armor);
         this.model = model;
