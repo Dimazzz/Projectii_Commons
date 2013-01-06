@@ -5,20 +5,20 @@ public class WeaponModel {
     private final int type;
     private final String name;
     private int rate;
-    private int bulletSpeed;
+    private int projectileSpeed;
     private int damage;
     private int energyConsumption;
     private int distance;
     private int range;
     private int cooldown;
 
-    public WeaponModel(int id, String name, int rate, int type, int bulletSpeed, int damage,
-                          int energyConsumption, int distance, int range, int cooldown) {
+    public WeaponModel(int id, String name, int rate, int type, int projectileSpeed, int damage,
+                       int energyConsumption, int distance, int range, int cooldown) {
         this.name = name;
         this.rate = rate;
         this.id = id;
         this.type = type;
-        this.bulletSpeed = bulletSpeed;
+        this.projectileSpeed = projectileSpeed;
         this.damage = damage;
         this.energyConsumption = energyConsumption;
         this.distance = distance;
@@ -42,8 +42,8 @@ public class WeaponModel {
         return rate;
     }
 
-    public int getBulletSpeed() {
-        return bulletSpeed;
+    public int getProjectileSpeed() {
+        return projectileSpeed;
     }
 
     public int getDamage() {

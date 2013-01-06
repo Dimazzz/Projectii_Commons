@@ -16,8 +16,8 @@ public class Weapon {
         this.currentCooldown = model.getCooldown();
     }
 
-    public Bullet fire(Point direction, int rotation) {
-//        return new Bullet(bulletId, location, rotation, 1000, bulletSpeed,
+    public Projectile fire(Point direction, int rotation) {
+//        return new Projectile(bulletId, location, rotation, 1000, bulletSpeed,
 //                damage, direction, range);
         return null;
     }
