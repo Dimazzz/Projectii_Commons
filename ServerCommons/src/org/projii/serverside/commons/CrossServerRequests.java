@@ -1,6 +1,6 @@
 package org.projii.serverside.commons;
 
-public class CoordinationServerRequests {
+public class CrossServerRequests {
     public static final int AUTHORIZATION = 1;
     public static final int MY_INFO = 2;
     public static final int CLIENT_CAME = 3;
