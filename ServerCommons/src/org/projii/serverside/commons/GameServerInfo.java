@@ -1,6 +1,6 @@
 package org.projii.serverside.commons;
 
-import org.jai.BSON.BSONSerializable;import java.lang.String;
+import org.jai.BSON.BSONSerializable;
 
 public class GameServerInfo {
 
