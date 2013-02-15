@@ -17,10 +17,10 @@ public class TimeLogger {
     }
 
     public static void setStatus(boolean active) {
-        this.active = active;
+        active = active;
     }
 
     public static boolean isActive() {
-        return status;
+        return active;
     }
 }

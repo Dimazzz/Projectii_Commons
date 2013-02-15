@@ -1,11 +1,18 @@
 package org.projii.commons.spaceship.equipment;
 
+import org.jai.BSON.BSONSerializable;
+
 public class SpaceshipEngine {
 
+    @BSONSerializable
     private final int id;
+    @BSONSerializable
     private int maxSpeed;
+    @BSONSerializable
     private int acceleration;
+    @BSONSerializable
     private int maneuverability;
+    @BSONSerializable
     private String name;
 
 
