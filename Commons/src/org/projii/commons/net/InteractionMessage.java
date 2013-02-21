@@ -1,5 +1,5 @@
 package org.projii.commons.net;
 
-public interface Response {
+public interface InteractionMessage {
     int getType();
 }
