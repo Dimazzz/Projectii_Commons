@@ -6,7 +6,7 @@ import org.jboss.netty.channel.ChannelHandlerContext;
 import org.jboss.netty.channel.Channels;
 import org.jboss.netty.channel.MessageEvent;
 import org.jboss.netty.channel.SimpleChannelUpstreamHandler;
-import org.projii.commons.net.Request;
+import org.projii.commons.net.InteractionMessage;
 
 import java.util.Map;
 
@@ -23,7 +23,7 @@ public class MessageDecoder extends SimpleChannelUpstreamHandler {
         BSONDocument requestDocument = (BSONDocument) e.getMessage();
         Integer type = (Integer) requestDocument.get("type");
         Class requestClass = correspondenceTable.get(type);
-        Request request = (Request) BSONSerializer.deserialize(requestClass, requestDocument);
+        InteractionMessage request = (InteractionMessage) BSONSerializer.deserialize(requestClass, requestDocument);
         Channels.fireMessageReceived(ctx, request);
     }
 
