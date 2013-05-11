@@ -4,15 +4,9 @@ import org.projii.commons.utils.RotationAngles;
 import org.projii.commons.utils.Vector2;
 
 import static org.projii.commons.utils.our_math.normalizeAngle;
-import static org.projii.commons.utils.our_math.radToDeg;
+import static org.projii.commons.utils.our_math.radiansToDegrees;
 
-/**
- * Created with IntelliJ IDEA.
- * User: SunShelbi
- * Date: 5/11/13
- * Time: 1:08 AM
- * To change this template use File | Settings | File Templates.
- */
+
 public class moveLogic {
 
         private final static int START_JOYSTICK_POSITION=0;
@@ -76,7 +70,7 @@ public class moveLogic {
         }
         public static RotationAngles calculateAngles(Vector2 joysticPosition,float shipRotation)
         {
-            float  nextAngle=normalizeAngle(radToDeg((float) Math.atan2(joysticPosition.x, -joysticPosition.y)));
+            float  nextAngle=normalizeAngle(radiansToDegrees(((float) Math.atan2(joysticPosition.x, -joysticPosition.y))));
             float  normPrevRotation=normalizeAngle(shipRotation);
             if(Math.abs(nextAngle-normPrevRotation)>181)
             {
