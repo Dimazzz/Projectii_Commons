@@ -5,10 +5,10 @@ import org.jai.BSON.BSONSerializable;
 public class GameServerInfo {
 
     @BSONSerializable
-    private int maxNumberOfPlayers;
+    private final int maxNumberOfPlayers;
 
     @BSONSerializable
-    private String currentGameMap;
+    private final String currentGameMap;
 
     public GameServerInfo(int maxNumberOfPlayers, String currentGameMap) {
         this.maxNumberOfPlayers = maxNumberOfPlayers;
